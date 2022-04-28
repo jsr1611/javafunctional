@@ -5,6 +5,7 @@ import imperative.Main;
 import java.util.List;
 import java.util.function.Function;
 import java.util.function.IntConsumer;
+import java.util.function.Predicate;
 import java.util.function.ToIntFunction;
 import java.util.stream.Collectors;
 
@@ -17,7 +18,7 @@ public class _Stream {
                 new Person("Maria", Gender.FEMALE),
                 new Person("Alex", Gender.MALE),
                 new Person("Alice", Gender.FEMALE),
-                new Person("Bob", Gender.PREFER_NOT_TO_SAY)
+                new Person("Alice", Gender.FEMALE)
         );
 
 //        people.stream()
@@ -29,10 +30,16 @@ public class _Stream {
         ToIntFunction<String> length = String::length;
         IntConsumer println = System.out::println; // = x -> System.out.println(x);
 
-        people.stream()
-                .map(personStringFunction)
-                .mapToInt(length)
-                .forEach(println);
+//        people.stream()
+//                .map(personStringFunction)
+//                .mapToInt(length)
+//                .forEach(println);
+
+        Predicate<Person> personPredicate = person -> Gender.FEMALE.equals(person.gender);
+        boolean containsOnlyFemales = people.stream()
+                .allMatch(personPredicate);
+
+        System.out.println(containsOnlyFemales);
 
     }
 
