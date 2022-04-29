@@ -14,4 +14,20 @@ public class Customer {
         this.phoneNumber = phoneNumber;
         this.dob = dob;
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public LocalDate getDob() {
+        return dob;
+    }
 }
